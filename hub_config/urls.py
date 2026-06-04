@@ -13,7 +13,6 @@ urlpatterns += i18n_patterns(  # type: ignore[arg-type]
     path("", include("apps.pages.urls")),
 )
 
-if settings.DEBUG:
-    urlpatterns += static(  # type: ignore[arg-type]
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-    )
+urlpatterns += static(  # type: ignore[arg-type]
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+)
