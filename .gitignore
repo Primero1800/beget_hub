@@ -1,6 +1,5 @@
 # Django / Beget deployment
-public/*
-!public/.gitkeep
+public/static/
 tmp/*
 !tmp/.gitkeep
 
