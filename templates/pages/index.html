@@ -104,9 +104,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
-            gap: 2px;
+            gap: 0;
             aspect-ratio: 1 / 1;
-            background: #e8e8e4;
         }
         .collage-cell {
             overflow: hidden;
@@ -191,7 +190,7 @@
 
     <main>
         <h1>primero1800.ru</h1>
-        <p class="subtitle">{% trans "Projects list" %}</p>
+        <p class="subtitle">{% trans "Space" %}</p>
 
         {% if projects %}
             <div class="cards">
