@@ -14,6 +14,7 @@
         .projects a:hover { text-decoration: underline; }
         .projects .desc { color: #555; margin-top: 4px; font-size: 0.95rem; }
         .empty { color: #999; font-style: italic; }
+        footer { margin-top: 60px; color: #bbb; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -34,5 +35,6 @@
     {% else %}
         <p class="empty">Проекты появятся здесь.</p>
     {% endif %}
+    <footer>© {% now "Y" %} primero1800.ru · v0.1.0</footer>
 </body>
 </html>
