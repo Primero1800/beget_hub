@@ -1,31 +1,31 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-04 17:51+0300\n"
+"POT-Creation-Date: 2026-06-04 19:00+0300\n"
 "Language: en\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/pages/index.html:233
-msgid "Personal"
-msgstr "Personal"
+#: templates/pages/index.html:193
+msgid "Space"
+msgstr "Space"
 
-#: templates/pages/index.html:233
-msgid "projects hub"
-msgstr "projects hub"
-
-#: templates/pages/index.html:234
-msgid ""
-"A collection of independent web projects. Each one lives on its own "
-"subdomain."
-msgstr ""
-"A collection of independent web projects. Each one lives on its own "
-"subdomain."
-
-#: templates/pages/index.html:238
-msgid "Projects"
-msgstr "Projects"
-
-#: templates/pages/index.html:263
+#: templates/pages/index.html:230
 msgid "Projects will appear here."
 msgstr "Projects will appear here."
+
+#~ msgid "Personal"
+#~ msgstr "Personal"
+
+#~ msgid "projects hub"
+#~ msgstr "projects hub"
+
+#~ msgid ""
+#~ "A collection of independent web projects. Each one lives on its own "
+#~ "subdomain."
+#~ msgstr ""
+#~ "A collection of independent web projects. Each one lives on its own "
+#~ "subdomain."
+
+#~ msgid "Projects"
+#~ msgstr "Projects"
