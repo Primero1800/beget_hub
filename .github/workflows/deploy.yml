@@ -1,0 +1,32 @@
+name: Deploy to primero1800.ru
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: localhost
+          port: 222
+          username: primero18
+          key: ${{ secrets.BEGET_SSH_KEY }}
+          proxy_host: primero18.beget.tech
+          proxy_port: 22
+          proxy_username: primero18
+          proxy_key: ${{ secrets.BEGET_SSH_KEY }}
+          proxy_strict_host_key_checking: false
+          script: |
+            set -e
+            cd ~/primero1800.ru
+            git pull origin main
+            source venv/bin/activate
+            pip install -r requirements.txt -q
+            python manage.py migrate --noinput
+            python manage.py collectstatic --noinput
+            touch tmp/restart.txt
+            echo "Deployed to primero1800.ru"

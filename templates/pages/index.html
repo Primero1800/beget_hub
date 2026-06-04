@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>primero1800.ru</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 60px auto; padding: 0 20px; color: #333; }
+        h1 { font-size: 2rem; margin-bottom: 8px; }
+        .subtitle { color: #666; margin-bottom: 40px; }
+        .projects { list-style: none; padding: 0; }
+        .projects li { margin-bottom: 20px; }
+        .projects a { font-size: 1.2rem; font-weight: bold; color: #0066cc; text-decoration: none; }
+        .projects a:hover { text-decoration: underline; }
+        .projects .desc { color: #555; margin-top: 4px; font-size: 0.95rem; }
+        .empty { color: #999; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>primero1800.ru</h1>
+    <p class="subtitle">Список проектов</p>
+
+    {% if projects %}
+        <ul class="projects">
+            {% for project in projects %}
+            <li>
+                <a href="{{ project.url }}">{{ project.name }}</a>
+                {% if project.description %}
+                    <div class="desc">{{ project.description }}</div>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="empty">Проекты появятся здесь.</p>
+    {% endif %}
+</body>
+</html>

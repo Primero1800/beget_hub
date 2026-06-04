@@ -1,3 +1,9 @@
+# Django / Beget deployment
+public/*
+!public/.gitkeep
+tmp/*
+!tmp/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
