@@ -29,5 +29,6 @@ jobs:
             pip install -r requirements.txt -q
             python manage.py migrate --noinput
             python manage.py collectstatic --noinput
+            python manage.py createsuperuser --no-input 2>/dev/null || true
             touch tmp/restart.txt
             echo "Deployed to primero1800.ru"
