@@ -68,11 +68,17 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction
 
+      - name: Install gettext
+        run: sudo apt-get install -y gettext
+
       - name: Create .env
         run: |
           echo "SECRET_KEY=ci-secret-key" >> .env
           echo "DEBUG=True" >> .env
           echo "ALLOWED_HOSTS=localhost,127.0.0.1" >> .env
+
+      - name: Compile messages
+        run: poetry run python manage.py compilemessages
 
       - name: Run tests
         run: poetry run pytest
