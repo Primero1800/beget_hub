@@ -1,11 +1,29 @@
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-04 17:51+0300\n"
+"Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
 
-msgid "Projects list"
-msgstr "Список проектов"
+#: templates/pages/index.html:233
+msgid "Personal"
+msgstr "Личные"
 
+#: templates/pages/index.html:233
+msgid "projects hub"
+msgstr "хаб проектов"
+
+#: templates/pages/index.html:234
+msgid ""
+"A collection of independent web projects. Each one lives on its own "
+"subdomain."
+msgstr "Коллекция независимых веб-проектов. Каждый живёт на своём поддомене."
+
+#: templates/pages/index.html:238
+msgid "Projects"
+msgstr "Проекты"
+
+#: templates/pages/index.html:263
 msgid "Projects will appear here."
 msgstr "Проекты появятся здесь."

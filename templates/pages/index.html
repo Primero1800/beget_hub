@@ -6,55 +6,266 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>primero1800.ru</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: sans-serif; max-width: 800px; margin: 60px auto; padding: 0 20px; color: #222; min-height: calc(100vh - 120px); display: flex; flex-direction: column; }
-        main { flex: 1; }
-        h1 { font-size: 2rem; margin-bottom: 8px; }
-        .subtitle { color: #555; margin-bottom: 40px; }
-        .projects { list-style: none; padding: 0; }
-        .projects li { margin-bottom: 20px; }
-        .projects a { font-size: 1.2rem; font-weight: bold; color: #0055aa; text-decoration: none; }
-        .projects a:hover { text-decoration: underline; }
-        .projects .desc { color: #444; margin-top: 4px; font-size: 0.95rem; }
-        .empty { color: #666; font-style: italic; }
-        footer { color: #666; font-size: 0.8rem; padding: 20px 0; }
-        .lang-switcher { position: fixed; top: 16px; right: 20px; display: flex; gap: 4px; }
-        .lang-switcher button { background: none; border: none; font-size: 1.4rem; cursor: pointer; opacity: 0.4; padding: 0; line-height: 1; }
-        .lang-switcher button.active { opacity: 1; }
-        .lang-switcher button:hover { opacity: 0.8; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f7f7f5;
+            color: #1a1a1a;
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e8e8e4;
+            padding: 0 40px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .logo {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+        .logo span { color: #9b9b9b; font-weight: 400; }
+
+        /* ── Lang switcher ── */
+        .lang-switcher {
+            display: flex;
+            gap: 2px;
+            background: #f0f0ec;
+            border-radius: 8px;
+            padding: 3px;
+        }
+        .lang-switcher button {
+            background: none;
+            border: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 6px;
+            color: #9b9b9b;
+            transition: all 0.15s;
+        }
+        .lang-switcher button.active {
+            background: #fff;
+            color: #1a1a1a;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .lang-switcher button:hover:not(.active) { color: #555; }
+
+        /* ── Hero ── */
+        .hero {
+            max-width: 760px;
+            margin: 80px auto 64px;
+            padding: 0 40px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .hero h1 .accent {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b6b6b;
+            line-height: 1.6;
+        }
+
+        /* ── Grid ── */
+        .projects-section {
+            max-width: 760px;
+            margin: 0 auto 100px;
+            padding: 0 40px;
+        }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9b9b9b;
+            margin-bottom: 20px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: #fff;
+            border: 1px solid #e8e8e4;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: box-shadow 0.2s, transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-preview {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .card-preview.grad-0 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-preview.grad-1 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .card-preview.grad-2 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .card-preview.grad-3 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .card-preview.grad-4 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        .card-preview-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+
+        .card-body {
+            padding: 18px 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .card-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+        .card-desc {
+            font-size: 0.875rem;
+            color: #6b6b6b;
+            line-height: 1.5;
+        }
+        .card-link {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #b0b0aa;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .card-link::after { content: ' ↗'; }
+
+        /* ── Empty ── */
+        .empty {
+            background: #fff;
+            border: 1px dashed #d8d8d4;
+            border-radius: 12px;
+            padding: 48px 32px;
+            text-align: center;
+            color: #9b9b9b;
+            font-size: 0.95rem;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid #e8e8e4;
+            background: #fff;
+            padding: 24px 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #b0b0aa;
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 0 20px; }
+            .hero { padding: 0 20px; margin-top: 48px; }
+            .hero h1 { font-size: 2rem; }
+            .projects-section { padding: 0 20px; }
+            .cards { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <form class="lang-switcher" action="{% url 'set_language' %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}">
-        <button type="submit" name="language" value="ru"
-                class="{% if LANGUAGE_CODE == 'ru' %}active{% endif %}">🇷🇺</button>
-        <button type="submit" name="language" value="en"
-                class="{% if LANGUAGE_CODE == 'en' %}active{% endif %}">🇬🇧</button>
-    </form>
+    <header>
+        <div class="logo">primero1800<span>.ru</span></div>
+        <form class="lang-switcher" action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button type="submit" name="language" value="ru"
+                    class="{% if LANGUAGE_CODE == 'ru' %}active{% endif %}">RU</button>
+            <button type="submit" name="language" value="en"
+                    class="{% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</button>
+        </form>
+    </header>
 
     <main>
-        <h1>primero1800.ru</h1>
-        <p class="subtitle">{% trans "Projects list" %}</p>
+        <section class="hero">
+            <h1>{% trans "Personal" %}<br><span class="accent">{% trans "projects hub" %}</span></h1>
+            <p>{% trans "A collection of independent web projects. Each one lives on its own subdomain." %}</p>
+        </section>
 
-        {% if projects %}
-            <ul class="projects">
-                {% for project in projects %}
-                <li>
-                    <a href="{{ project.url }}">{{ project.name }}</a>
-                    {% if project.description %}
-                        <div class="desc">{{ project.description }}</div>
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="empty">{% trans "Projects will appear here." %}</p>
-        {% endif %}
+        <section class="projects-section">
+            <div class="section-label">{% trans "Projects" %}</div>
+
+            {% if projects %}
+                <div class="cards">
+                    {% for project in projects %}
+                    {% cycle 'grad-0' 'grad-1' 'grad-2' 'grad-3' 'grad-4' as grad silent %}
+                    <a class="card" href="{{ project.url }}" target="_blank" rel="noopener">
+                        <div class="card-preview {% if not project.preview_image %}{{ grad }}{% endif %}">
+                            {% if project.preview_image %}
+                                <img src="{{ project.preview_image }}" alt="{{ project.name }}" loading="lazy">
+                            {% else %}
+                                <div class="card-preview-label">{{ project.name|slice:":2" }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <div class="card-name">{{ project.name }}</div>
+                            {% if project.description %}
+                                <div class="card-desc">{{ project.description }}</div>
+                            {% endif %}
+                            <div class="card-link">{{ project.url|cut:"https://" }}</div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty">{% trans "Projects will appear here." %}</div>
+            {% endif %}
+        </section>
     </main>
 
     <footer>© {% now "Y" %} primero1800.ru · v{{ version }}</footer>
+
 </body>
 </html>
