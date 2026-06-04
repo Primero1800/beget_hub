@@ -1,10 +1,12 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>primero1800.ru</title>
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: sans-serif; max-width: 800px; margin: 60px auto; padding: 0 20px; color: #222; min-height: calc(100vh - 120px); display: flex; flex-direction: column; }
         main { flex: 1; }
         h1 { font-size: 2rem; margin-bottom: 8px; }
@@ -16,12 +18,26 @@
         .projects .desc { color: #444; margin-top: 4px; font-size: 0.95rem; }
         .empty { color: #666; font-style: italic; }
         footer { color: #666; font-size: 0.8rem; padding: 20px 0; }
+        .lang-switcher { position: fixed; top: 16px; right: 20px; display: flex; gap: 4px; }
+        .lang-switcher button { background: none; border: none; font-size: 1.4rem; cursor: pointer; opacity: 0.4; padding: 0; line-height: 1; }
+        .lang-switcher button.active { opacity: 1; }
+        .lang-switcher button:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
+
+    <form class="lang-switcher" action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button type="submit" name="language" value="ru"
+                class="{% if LANGUAGE_CODE == 'ru' %}active{% endif %}">🇷🇺</button>
+        <button type="submit" name="language" value="en"
+                class="{% if LANGUAGE_CODE == 'en' %}active{% endif %}">🇬🇧</button>
+    </form>
+
     <main>
         <h1>primero1800.ru</h1>
-        <p class="subtitle">Список проектов</p>
+        <p class="subtitle">{% trans "Projects list" %}</p>
 
         {% if projects %}
             <ul class="projects">
@@ -35,7 +51,7 @@
                 {% endfor %}
             </ul>
         {% else %}
-            <p class="empty">Проекты появятся здесь.</p>
+            <p class="empty">{% trans "Projects will appear here." %}</p>
         {% endif %}
     </main>
 

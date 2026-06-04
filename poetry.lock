@@ -212,6 +212,39 @@ argon2 = ["argon2-cffi (>=23.1.0)"]
 bcrypt = ["bcrypt (>=4.1.1)"]
 
 [[package]]
+name = "django-modeltranslation"
+version = "0.19.13"
+description = "Translates Django models using a registration approach."
+optional = false
+python-versions = "*"
+groups = ["main"]
+markers = "python_version >= \"3.15\""
+files = [
+    {file = "django_modeltranslation-0.19.13-py3-none-any.whl", hash = "sha256:69b7dc9a8bae152ab84caf969a5ad478f588f4d9f8345545d4f20f66eeb51ef6"},
+    {file = "django_modeltranslation-0.19.13.tar.gz", hash = "sha256:df2516fdfb6a865fd1dfdda74e549d437d8ca148c1d435663db36edb6863f34e"},
+]
+
+[package.dependencies]
+Django = ">=4.2"
+
+[[package]]
+name = "django-modeltranslation"
+version = "0.20.3"
+description = "Translates Django models using a registration approach."
+optional = false
+python-versions = "<4,>=3.10"
+groups = ["main"]
+markers = "python_version < \"3.15\""
+files = [
+    {file = "django_modeltranslation-0.20.3-py3-none-any.whl", hash = "sha256:0e1aaf77ce3dcf80c7ec67a6d67821635d07f4849c90363bc0afedb237b014f0"},
+    {file = "django_modeltranslation-0.20.3.tar.gz", hash = "sha256:53f5e33927b99e184f3100c965c45f306f370b7086c6b34e35468800be0916ea"},
+]
+
+[package.dependencies]
+django = ">=5.1"
+typing-extensions = ">=4.0.1"
+
+[[package]]
 name = "django-stubs"
 version = "6.0.5"
 description = "Mypy stubs for Django"
@@ -637,11 +670,12 @@ version = "4.15.0"
 description = "Backported and Experimental Type Hints for Python 3.9+"
 optional = false
 python-versions = ">=3.9"
-groups = ["dev"]
+groups = ["main", "dev"]
 files = [
     {file = "typing_extensions-4.15.0-py3-none-any.whl", hash = "sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548"},
     {file = "typing_extensions-4.15.0.tar.gz", hash = "sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466"},
 ]
+markers = {main = "python_version < \"3.15\""}
 
 [[package]]
 name = "tzdata"
@@ -674,4 +708,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "577cf526db07c1537f9be960e9e0f10985bb30686f1b588805594835782d3011"
+content-hash = "d51743169fa445d0529a475c19db7499222e3f3a758f26f960f1924d3274d2ae"
