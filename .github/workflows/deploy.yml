@@ -23,7 +23,8 @@ jobs:
             set -e
             git config --global --add safe.directory /home/p/primero18/primero1800.ru
             cd ~/primero1800.ru
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
             source venv/bin/activate
             pip install -r requirements.txt -q
             python manage.py migrate --noinput
