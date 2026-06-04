@@ -42,4 +42,4 @@ def test_hub_index_hides_inactive_projects(client):
 @pytest.mark.django_db
 def test_hub_index_english(client):
     response = client.get("/en/")
-    assert b"Projects list" in response.content
+    assert b"projects hub" in response.content

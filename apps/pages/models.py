@@ -5,6 +5,9 @@ class SubProject(models.Model):  # type: ignore[django-manager-missing]
     name = models.CharField(max_length=100)
     url = models.URLField()
     description = models.TextField(blank=True)
+    preview_image = models.URLField(
+        blank=True, help_text="URL of card preview screenshot"
+    )
     order = models.PositiveIntegerField(default=0)
     active = models.BooleanField(default=True)
 
