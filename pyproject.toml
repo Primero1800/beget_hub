@@ -10,7 +10,8 @@ dependencies = [
     "django (>=6.0.6,<7.0.0)",
     "python-decouple (>=3.8,<4.0)",
     "whitenoise (>=6.12.0,<7.0.0)",
-    "django-modeltranslation (>=0.18)"
+    "django-modeltranslation (>=0.18)",
+    "pillow (>=11.0.0)"
 ]
 
 
