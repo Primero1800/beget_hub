@@ -21,6 +21,7 @@ jobs:
           proxy_password: ${{ secrets.BEGET_PASSWORD }}
           script: |
             set -e
+            git config --global --add safe.directory /home/p/primero18/primero1800.ru
             cd ~/primero1800.ru
             git pull origin main
             source venv/bin/activate
