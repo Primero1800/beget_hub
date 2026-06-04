@@ -69,3 +69,5 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "public"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+VERSION = (BASE_DIR / "VERSION").read_text().strip()

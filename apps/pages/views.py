@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 
 
 PROJECTS = [
@@ -7,4 +8,7 @@ PROJECTS = [
 
 
 def hub_index(request):
-    return render(request, "pages/index.html", {"projects": PROJECTS})
+    return render(request, "pages/index.html", {
+        "projects": PROJECTS,
+        "version": settings.VERSION,
+    })
