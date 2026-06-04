@@ -13,6 +13,8 @@
             background: #f7f7f5;
             color: #1a1a1a;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ── Header ── */
@@ -62,52 +64,25 @@
         }
         .lang-switcher button:hover:not(.active) { color: #555; }
 
-        /* ── Hero ── */
-        .hero {
-            max-width: 760px;
-            margin: 80px auto 64px;
+        /* ── Main ── */
+        main {
+            flex: 1;
+            max-width: 800px;
+            width: 100%;
+            margin: 60px auto;
             padding: 0 40px;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.15;
-            margin-bottom: 16px;
-        }
-        .hero h1 .accent {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            color: #6b6b6b;
-            line-height: 1.6;
         }
 
-        /* ── Grid ── */
-        .projects-section {
-            max-width: 760px;
-            margin: 0 auto 100px;
-            padding: 0 40px;
-        }
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #9b9b9b;
-            margin-bottom: 20px;
-        }
+        h1 { font-size: 2rem; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .subtitle { color: #555; margin-bottom: 40px; font-size: 1rem; }
+
+        /* ── Cards ── */
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 16px;
         }
 
-        /* ── Card ── */
         .card {
             background: #fff;
             border: 1px solid #e8e8e4;
@@ -124,49 +99,48 @@
             transform: translateY(-2px);
         }
 
-        .card-preview {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            position: relative;
+        /* ── 3×3 collage ── */
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 2px;
+            aspect-ratio: 1 / 1;
+            background: #e8e8e4;
         }
-        .card-preview img {
+        .collage-cell {
+            overflow: hidden;
+            background: #f0f0ec;
+        }
+        .collage-cell img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-        .card-preview.grad-0 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .card-preview.grad-1 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .card-preview.grad-2 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .card-preview.grad-3 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        .card-preview.grad-4 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        /* gradient placeholders when no images */
+        .collage.grad-0 .collage-cell { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .collage.grad-1 .collage-cell { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .collage.grad-2 .collage-cell { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .collage.grad-3 .collage-cell { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .collage.grad-4 .collage-cell { background: linear-gradient(135deg, #fa709a, #fee140); }
+        /* slight variation per cell for gradient placeholders */
+        .collage.grad-0 .collage-cell:nth-child(even) { opacity: 0.85; }
+        .collage.grad-1 .collage-cell:nth-child(even) { opacity: 0.85; }
+        .collage.grad-2 .collage-cell:nth-child(even) { opacity: 0.85; }
+        .collage.grad-3 .collage-cell:nth-child(even) { opacity: 0.85; }
+        .collage.grad-4 .collage-cell:nth-child(even) { opacity: 0.85; }
 
-        .card-preview-label {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: 800;
-            color: rgba(255,255,255,0.3);
-            letter-spacing: -0.05em;
-            text-transform: uppercase;
-            pointer-events: none;
-        }
-
+        /* ── Card body ── */
         .card-body {
-            padding: 18px 20px 20px;
-            flex: 1;
+            padding: 16px 18px 18px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
         }
         .card-name {
             font-size: 1rem;
             font-weight: 600;
-            color: #1a1a1a;
             letter-spacing: -0.01em;
         }
         .card-desc {
@@ -174,32 +148,21 @@
             color: #6b6b6b;
             line-height: 1.5;
         }
-        .card-link {
-            margin-top: 10px;
+        .card-url {
+            margin-top: 8px;
             font-size: 0.8rem;
             color: #b0b0aa;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
-        .card-link::after { content: ' ↗'; }
+        .card-url::after { content: ' ↗'; }
 
         /* ── Empty ── */
-        .empty {
-            background: #fff;
-            border: 1px dashed #d8d8d4;
-            border-radius: 12px;
-            padding: 48px 32px;
-            text-align: center;
-            color: #9b9b9b;
-            font-size: 0.95rem;
-        }
+        .empty { color: #666; font-style: italic; }
 
         /* ── Footer ── */
         footer {
             border-top: 1px solid #e8e8e4;
             background: #fff;
-            padding: 24px 40px;
+            padding: 20px 40px;
             text-align: center;
             font-size: 0.8rem;
             color: #b0b0aa;
@@ -207,9 +170,7 @@
 
         @media (max-width: 600px) {
             header { padding: 0 20px; }
-            .hero { padding: 0 20px; margin-top: 48px; }
-            .hero h1 { font-size: 2rem; }
-            .projects-section { padding: 0 20px; }
+            main { padding: 0 20px; margin-top: 40px; }
             .cards { grid-template-columns: 1fr; }
         }
     </style>
@@ -229,40 +190,46 @@
     </header>
 
     <main>
-        <section class="hero">
-            <h1>{% trans "Personal" %}<br><span class="accent">{% trans "projects hub" %}</span></h1>
-            <p>{% trans "A collection of independent web projects. Each one lives on its own subdomain." %}</p>
-        </section>
+        <h1>primero1800.ru</h1>
+        <p class="subtitle">{% trans "Projects list" %}</p>
 
-        <section class="projects-section">
-            <div class="section-label">{% trans "Projects" %}</div>
-
-            {% if projects %}
-                <div class="cards">
-                    {% for project in projects %}
-                    {% cycle 'grad-0' 'grad-1' 'grad-2' 'grad-3' 'grad-4' as grad silent %}
-                    <a class="card" href="{{ project.url }}" target="_blank" rel="noopener">
-                        <div class="card-preview {% if not project.preview_image %}{{ grad }}{% endif %}">
-                            {% if project.preview_image %}
-                                <img src="{{ project.preview_image }}" alt="{{ project.name }}" loading="lazy">
-                            {% else %}
-                                <div class="card-preview-label">{{ project.name|slice:":2" }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="card-body">
-                            <div class="card-name">{{ project.name }}</div>
-                            {% if project.description %}
-                                <div class="card-desc">{{ project.description }}</div>
-                            {% endif %}
-                            <div class="card-link">{{ project.url|cut:"https://" }}</div>
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="empty">{% trans "Projects will appear here." %}</div>
-            {% endif %}
-        </section>
+        {% if projects %}
+            <div class="cards">
+                {% for project in projects %}
+                {% cycle 'grad-0' 'grad-1' 'grad-2' 'grad-3' 'grad-4' as grad silent %}
+                <a class="card" href="{{ project.url }}" target="_blank" rel="noopener">
+                    <div class="collage {{ grad }}">
+                        {% if project.preview_images %}
+                            {% for img_url in project.preview_images|slice:":9" %}
+                            <div class="collage-cell">
+                                <img src="{{ img_url }}" alt="" loading="lazy">
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="collage-cell"></div>
+                            <div class="collage-cell"></div>
+                            <div class="collage-cell"></div>
+                            <div class="collage-cell"></div>
+                            <div class="collage-cell"></div>
+                            <div class="collage-cell"></div>
+                            <div class="collage-cell"></div>
+                            <div class="collage-cell"></div>
+                            <div class="collage-cell"></div>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <div class="card-name">{{ project.name }}</div>
+                        {% if project.description %}
+                            <div class="card-desc">{{ project.description }}</div>
+                        {% endif %}
+                        <div class="card-url">{{ project.url|cut:"https://" }}</div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="empty">{% trans "Projects will appear here." %}</p>
+        {% endif %}
     </main>
 
     <footer>© {% now "Y" %} primero1800.ru · v{{ version }}</footer>
