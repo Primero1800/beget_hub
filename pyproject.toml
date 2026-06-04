@@ -5,7 +5,7 @@ description = "Hub site for primero1800.ru"
 authors = [
     {name = "Primero1800",email = "alexprimero1800@gmail.com"}
 ]
-requires-python = "^3.12"
+requires-python = ">=3.12"
 dependencies = [
     "django (>=6.0.6,<7.0.0)",
     "python-decouple (>=3.8,<4.0)"
@@ -14,6 +14,37 @@ dependencies = [
 
 [tool.poetry]
 package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.15.15"
+mypy = "^2.1.0"
+django-stubs = "^6.0.5"
+pytest = "^9.0.3"
+pytest-django = "^4.12.0"
+pytest-cov = "^7.1.0"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = ["migrations", "venv", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["mypy_django_plugin.main"]
+exclude = ["migrations/", "venv/", ".venv/"]
+ignore_missing_imports = true
+
+[tool.django-stubs]
+django_settings_module = "hub_config.settings"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "hub_config.settings"
+python_files = ["test_*.py"]
+testpaths = ["tests"]
+addopts = "--cov=apps --cov=hub_config --cov-report=term-missing --cov-fail-under=80"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
