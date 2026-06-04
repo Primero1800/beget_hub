@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>primero1800.ru</title>
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 60px auto; padding: 0 20px; color: #333; }
+        body { font-family: sans-serif; max-width: 800px; margin: 60px auto; padding: 0 20px; color: #333; min-height: calc(100vh - 120px); display: flex; flex-direction: column; }
+        main { flex: 1; }
         h1 { font-size: 2rem; margin-bottom: 8px; }
         .subtitle { color: #666; margin-bottom: 40px; }
         .projects { list-style: none; padding: 0; }
@@ -14,27 +15,30 @@
         .projects a:hover { text-decoration: underline; }
         .projects .desc { color: #555; margin-top: 4px; font-size: 0.95rem; }
         .empty { color: #999; font-style: italic; }
-        footer { margin-top: 60px; color: #bbb; font-size: 0.8rem; }
+        footer { color: #bbb; font-size: 0.8rem; padding: 20px 0; }
     </style>
 </head>
 <body>
-    <h1>primero1800.ru</h1>
-    <p class="subtitle">Список проектов</p>
+    <main>
+        <h1>primero1800.ru</h1>
+        <p class="subtitle">Список проектов</p>
 
-    {% if projects %}
-        <ul class="projects">
-            {% for project in projects %}
-            <li>
-                <a href="{{ project.url }}">{{ project.name }}</a>
-                {% if project.description %}
-                    <div class="desc">{{ project.description }}</div>
-                {% endif %}
-            </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p class="empty">Проекты появятся здесь.</p>
-    {% endif %}
-    <footer>© {% now "Y" %} primero1800.ru · v0.1.0</footer>
+        {% if projects %}
+            <ul class="projects">
+                {% for project in projects %}
+                <li>
+                    <a href="{{ project.url }}">{{ project.name }}</a>
+                    {% if project.description %}
+                        <div class="desc">{{ project.description }}</div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty">Проекты появятся здесь.</p>
+        {% endif %}
+    </main>
+
+    <footer>© {% now "Y" %} primero1800.ru · v0.1.1</footer>
 </body>
 </html>
