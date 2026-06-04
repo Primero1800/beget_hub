@@ -14,12 +14,11 @@ jobs:
           host: localhost
           port: 222
           username: primero18
-          key: ${{ secrets.BEGET_SSH_KEY }}
+          password: ${{ secrets.BEGET_PASSWORD }}
           proxy_host: primero18.beget.tech
           proxy_port: 22
           proxy_username: primero18
-          proxy_key: ${{ secrets.BEGET_SSH_KEY }}
-          proxy_strict_host_key_checking: false
+          proxy_password: ${{ secrets.BEGET_PASSWORD }}
           script: |
             set -e
             cd ~/primero1800.ru
