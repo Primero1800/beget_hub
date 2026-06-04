@@ -2,7 +2,6 @@
 public/static/
 tmp/*
 !tmp/.gitkeep
-!locale/**/*.mo
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
